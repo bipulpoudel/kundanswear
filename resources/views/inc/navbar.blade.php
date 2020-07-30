@@ -16,7 +16,7 @@
                 
                 <!-- Logo desktop -->		
                 <a href="#" class="logo">
-                    <img src="/images/icons/logo-01.png" alt="IMG-LOGO">
+                    <h3 style="color: black">KundansWear</h3>
                 </a>
 
                 <!-- Menu desktop -->
@@ -55,7 +55,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->		
         <div class="logo-mobile">
-            <a href="index.html"><img src="/images/icons/logo-01.png" alt="IMG-LOGO"></a>
+            <h4 style="color: black">KundansWear</h4>
         </div>
 
         <!-- Icon header -->
