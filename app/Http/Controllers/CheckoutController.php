@@ -39,7 +39,6 @@ class CheckoutController extends Controller
         foreach($items as $item){
             array_push($product_details, ['name' => $item->name, 'quantity' =>$item->quantity,'size' => reset($item->attributes)[0] ]);
         }
-        dd($product_details);
         $order = new Order;
         $order->name = $request->input('name');
         $order->address = $request->input('address');
