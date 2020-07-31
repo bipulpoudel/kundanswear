@@ -171,10 +171,9 @@
 						</li>
 
 						<li class="nav-item p-b-10">
-							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
+							<a class="nav-link" data-toggle="tab" href="#information" role="tab">Material & Care</a>
 						</li>
 					</ul>
-
 					<!-- Tab panes -->
 					<div class="tab-content p-t-43">
 						<!-- - -->

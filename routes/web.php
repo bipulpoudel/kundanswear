@@ -24,6 +24,7 @@ Route::get('/shop/category/{slug}', 'ProductController@show_category')->name('pr
 //CART ROUTES
 Route::get('/cart','CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@create')->name('cart.create');
+Route::get('/destroy/{product}', 'CartController@destroy')->name('cart.destroy');
 
 
 //ORDER TRACK ROUTES

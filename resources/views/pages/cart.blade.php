@@ -37,7 +37,7 @@
 									<th class="column-3">Size</th>
 									<th class="column-4">Quantity</th>
 									<th class="column-5">Total</th>
-
+									<th class="column-6">Action</th>
 								</tr>
 
                                 @foreach ($items as $item)
@@ -49,21 +49,12 @@
                                             </td>
                                         <td class="column-2">{{$item->name}}</td>
 										<td class="column-3">$ {{$item->price}}</td>
-											<td class="column-3">{{reset($item->attributes)[0]}}</td>
-                                            <td class="column-4">
-                                                <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                                    </div>
-
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="{{$item->quantity}}">
-
-                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="column-5">$ {{$item->quantity*$item->price}}</td>
+										<td class="column-3">{{reset($item->attributes)[0]}}</td>
+                                         <td class="column-4">
+                                                {{$item->quantity}}
+										 </td>
+											<td class="column-5">$ {{$item->quantity*$item->price}}</td>
+											<td class="column-6"><a href="{{route('cart.destroy',$item->id)}}"><i class="zmdi zmdi-close"></i></a></td>
                                         </tr>
                                 @endforeach
 								
@@ -74,9 +65,6 @@
 							<div class="flex-w flex-m m-r-20 m-tb-5">
 							</div>
 
-							<div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-								Update Cart
-							</div>
 						</div>
 					</div>
 				</div>
@@ -160,7 +148,7 @@
 						</div>
 
 						<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							Proceed to Checkout
+						<a href="{{route('checkout.index')}}" style="color: white">Proceed to Checkout</a>
 						</button>
 					</div>
 				</div>

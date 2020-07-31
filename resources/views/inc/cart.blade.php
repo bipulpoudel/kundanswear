@@ -25,10 +25,10 @@
                                 <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
                                     {{$item->name}}
                                 </a>
-
                                 <span class="header-cart-item-info">
                                     {{$item->quantity}} x  ₹{{$item->price}}
                                 </span>
+                                <a href="{{route('cart.destroy',$item->id)}}"><p style="color: red">Remove</p></a>
                             </div>
                         </li>
                 @endforeach
@@ -44,7 +44,7 @@
                         View Cart
                     </a>
                     @if (count(\Cart::getContent()) > 0)
-                    <a href="/checkout" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                <a href="{{route('checkout.index')}}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                         Check Out
                     </a>
                     @else

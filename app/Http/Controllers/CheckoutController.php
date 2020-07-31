@@ -37,7 +37,7 @@ class CheckoutController extends Controller
         $items = \Cart::getContent();
         $product_details = [];
         foreach($items as $item){
-            array_push($product_details, ['name' => $item->name, 'quantity' =>$item->quantity,'size' => reset($item->attributes)[0] ]);
+            array_push($product_details, ['slug' => $item->associatedModel->slug, 'quantity' =>$item->quantity,'size' => reset($item->attributes)[0] ]);
         }
         $order = new Order;
         $order->name = $request->input('name');
