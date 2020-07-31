@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'IndexPageController@index')->name('index');
+Route::get('/about', 'IndexPageController@about')->name('about');
 
 
 //PRODUCT ROUTES

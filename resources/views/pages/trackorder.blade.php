@@ -110,8 +110,8 @@
 								Address
 							</span>
 
-							<p class="stext-115 cl6 size-213 p-t-18">
-								Coza Store Center 8th floor, 379 Hudson St, New York, NY 10018 US
+							<p class="stext-115 cl6 size-400 p-t-18">
+								Address :plot no :189 park view Appartment, BSP Colony, Moti Nagar , Eraggada, Hyderabad
 							</p>
 						</div>
 					</div>
@@ -126,8 +126,8 @@
 								Lets Talk
 							</span>
 
-							<p class="stext-115 cl1 size-213 p-t-18">
-								+1 800 1236879
+							<p class="stext-115 cl1 size-400 p-t-18">
+								+91 -9949270529 or +91 -9505854124
 							</p>
 						</div>
 					</div>
@@ -143,7 +143,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								contact@example.com
+								kundans9949@gmail.com
 							</p>
 						</div>
 					</div>

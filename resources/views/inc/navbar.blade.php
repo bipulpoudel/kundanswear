@@ -1,21 +1,25 @@
 <!-- Header -->
 <header class="header-v4">
     <!-- Header desktop -->
-    <div class="container-menu-desktop">
-        <!-- Topbar -->
-        <div class="top-bar">
-            <div class="content-topbar flex-sb-m h-full container">
-                <div class="left-top-bar">
-                    Free shipping for standard order over $100
-                </div>
-            </div>
-        </div>
+    <div class="container-menu-desktop">        
+			<div class="top-bar">
+				<div class="content-topbar flex-sb-m h-full container">
+					<div class="left-top-bar">
+						Free shipping for standard order over $100
+					</div>
 
+					<div class="right-top-bar flex-w h-full">
+                        <a href="#" class="flex-c-m trans-04 p-lr-25">
+							About
+						</a>
+					</div>
+				</div>
+			</div>
         <div class="wrap-menu-desktop how-shadow1">
             <nav class="limiter-menu-desktop container">
                 
                 <!-- Logo desktop -->		
-                <a href="#" class="logo">
+            <a href="{{route('index')}}" class="logo">
                     <h3 style="color: black">KundansWear</h3>
                 </a>
 
@@ -23,19 +27,15 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="{{route('index')}}">Home</a>
                         </li>
 
                         <li>
-                            <a href="/trackorder">Track My Order</a>
+                            <a href="{{route('trackorder.index')}}">Track My Order</a>
                         </li>
 
                         <li>
-                            <a href="about.html">About</a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="{{route('about')}}">About</a>
                         </li>
                     </ul>
                 </div>	
@@ -87,35 +87,15 @@
 
         <ul class="main-menu-m">
             <li>
-                <a href="index.html">Home</a>
-                <ul class="sub-menu-m">
-                    <li><a href="index.html">Homepage 1</a></li>
-                    <li><a href="home-02.html">Homepage 2</a></li>
-                    <li><a href="home-03.html">Homepage 3</a></li>
-                </ul>
-                <span class="arrow-main-menu-m">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </span>
+                <a href="{{route('index')}}">Home</a>
             </li>
 
             <li>
-                <a href="product.html">Shop</a>
+                <a href="{{route('trackorder.index')}}">Track Order</a>
             </li>
 
             <li>
-                <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-            </li>
-
-            <li>
-                <a href="blog.html">Blog</a>
-            </li>
-
-            <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
+                <a href="{{route('about')}}">About</a>
             </li>
         </ul>
     </div>

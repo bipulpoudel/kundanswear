@@ -21,6 +21,15 @@ class IndexPageController extends Controller
         $overview_products = Product::inRandomOrder()->limit(12)->get();
         return view('pages.index')->with(compact('categories','featured_products','quick_view_product','overview_products'));
     }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function about()
+    {
+        return view('pages.about');
+    }
 
     /**
      * Show the form for creating a new resource.
