@@ -103,13 +103,12 @@
 											<div class="size-203 flex-c-m respon6">
 												Size
 											</div>
-
 											<div class="size-204 respon6-next">
 												<div class="rs1-select2 bor8 bg0">
 													<select class="js-select2" name="size" required>
-														<option value="medium">Size M</option>
-														<option value="large">Size L</option>
-														<option value="extra-large">Size XL</option>
+														@foreach ($product->sizes as $size)
+														<option value="{{$size->name}}">{{$size->name}}</option>
+														@endforeach	
 													</select>
 													<div class="dropDownSelect2"></div>
 												</div>
@@ -206,7 +205,7 @@
 			</span>
 
 			<span class="stext-107 cl6 p-lr-25">
-				Categories: Jacket, Men
+				Categories: {{$product->category->name}},Women
 			</span>
 		</div>
 	</section>

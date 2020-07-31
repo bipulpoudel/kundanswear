@@ -33,7 +33,9 @@ class CartController extends Controller
             'name' => $product->name,
             'price' => $product->price,
             'quantity' => $request->input('num-product'),
-            'attributes' => array(),
+            'attributes' => array(
+                $request->input('size')
+            ),
             'associatedModel' => $product
         ));
         Alert::success($product->name, 'is added to Cart');

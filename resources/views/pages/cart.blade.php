@@ -34,8 +34,10 @@
 									<th class="column-1">Product</th>
 									<th class="column-2"></th>
 									<th class="column-3">Price</th>
+									<th class="column-3">Size</th>
 									<th class="column-4">Quantity</th>
 									<th class="column-5">Total</th>
+
 								</tr>
 
                                 @foreach ($items as $item)
@@ -46,7 +48,8 @@
                                                 </div>
                                             </td>
                                         <td class="column-2">{{$item->name}}</td>
-                                        <td class="column-3">$ {{$item->price}}</td>
+										<td class="column-3">$ {{$item->price}}</td>
+											<td class="column-3">{{reset($item->attributes)[0]}}</td>
                                             <td class="column-4">
                                                 <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">

@@ -33,13 +33,13 @@ class CheckoutController extends Controller
             'postcode' => ['required', 'numeric'],
             'phone' => ['required', 'numeric'],
             'email' => ['required'],
-            'order_note' => ['required'],
         ]);
         $items = \Cart::getContent();
         $product_details = [];
         foreach($items as $item){
-            array_push($product_details, ['name' => $item->name, 'quantity' =>$item->quantity]);
+            array_push($product_details, ['name' => $item->name, 'quantity' =>$item->quantity,'size' => reset($item->attributes)[0] ]);
         }
+        dd($product_details);
         $order = new Order;
         $order->name = $request->input('name');
         $order->address = $request->input('address');

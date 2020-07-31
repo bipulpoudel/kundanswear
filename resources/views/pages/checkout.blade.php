@@ -95,7 +95,7 @@
                                 @foreach ($items as $item)
                                 <div class="p-t-5">
                                     <span class="stext-112 cl8">
-                                        {{$item->name}}
+                                        {{$item->name}} - {{reset($item->attributes)[0]}}
                                     </span>
 
                                     <div class="rs1-select2 rs2-select2 bg0 m-b-12 m-t-9">
