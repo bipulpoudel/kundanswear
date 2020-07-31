@@ -31,7 +31,7 @@ Route::post('/trackorder', 'TrackorderController@show')->name('trackorder.show')
 
 //ORDER TRACK ROUTES
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-Route::post('/checkout', 'CheckOutController@create')->name('checkout.create');
+Route::post('/checkout', 'CheckoutController@create')->name('checkout.create');
 
 
 Route::group(['prefix' => 'admin'], function () {
