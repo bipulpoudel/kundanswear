@@ -5,7 +5,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+						First 100 orders will get 10% off.
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
@@ -80,7 +80,7 @@
         <ul class="topbar-mobile">
             <li>
                 <div class="left-top-bar">
-                    Free shipping for standard order over $100
+                    First 100 orders will get 10% off.
                 </div>
             </li>
         </ul>
