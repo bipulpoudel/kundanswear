@@ -62,11 +62,13 @@
 									<tr>
 									  <th>Product</th>
 									  <th>Quantity</th>
+									  <th>Size</th>
 									</tr>
 								@foreach (json_decode($order->product_details) as $item)
 									<tr>
-										<td><p class="stext-115 cl6 size-213 p-t-18">{{$item->name}}</p></td>
+										<td><p class="stext-115 cl6 size-213 p-t-18">{{$item->slug}}</p></td>
 										<td><p class="stext-115 cl6 size-213 p-t-18">{{$item->quantity}}</p></td>
+										<td><p class="stext-115 cl6 size-213 p-t-18">{{$item->size}}</p></td>
 									</tr>
 								@endforeach
 								</table>
