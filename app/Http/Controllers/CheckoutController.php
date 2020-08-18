@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Order;
+use Razorpay\Api\Api;
 
 class CheckoutController extends Controller
 {
@@ -30,8 +31,8 @@ class CheckoutController extends Controller
             'address' => ['required'],
             'town' => ['required'],
             'state' => [ 'required'],
-            'postcode' => ['required', 'numeric'],
-            'phone' => ['required', 'numeric'],
+            'postcode' => ['required'],
+            'phone' => ['required'],
             'email' => ['required'],
         ]);
         $items = \Cart::getContent();
@@ -39,20 +40,36 @@ class CheckoutController extends Controller
         foreach($items as $item){
             array_push($product_details, ['slug' => $item->associatedModel->slug, 'quantity' =>$item->quantity,'size' => reset($item->attributes)[0] ]);
         }
-        $order = new Order;
-        $order->name = $request->input('name');
-        $order->address = $request->input('address');
-        $order->town = $request->input('town');
-        $order->state = $request->input('state');
-        $order->postcode =$request->input('postcode');
-        $order->phone =$request->input('phone');
-        $order->email =$request->input('email');
-        $order->order_note =$request->input('order_note');
-        $order->product_details =json_encode($product_details);
-        $order->order_track_id = Str::random(32);
-        $order->save();
-        notify()->success('Your Order has been added successfuly!','Success!');
-        return back();
+
+        $api_key = 'rzp_live_Jhd5tYbBrphTZH';
+        $api_secret = '8iU9mRVmBpCBYf68z68MEYtW';
+        $api = new Api($api_key, $api_secret);
+
+        $receipt_id = Str::random(20);
+        $order = $api->order->create(array(
+            'receipt' => $receipt_id,
+            'amount' => \Cart::getTotal() * 100,
+            'payment_capture' => 1,
+            'currency' => 'INR'
+            )
+          );
+        
+        $response = [
+            'orderId'=> $order['id'],
+            'razorpayId' => $api_key,
+            'amount' => \Cart::getTotal() * 100,
+            'name' => $request->input('name'),
+            'email'=> $request->input('email'),
+            'contact'=> $request->input('phone'),
+            'address' => $request->input('address'),
+            'orderNote' => $request->input('order_note'),
+            'town' => $request->input('town'),
+            'state' => $request->input('state'),
+            'postcode' => $request->input('postcode'),
+            'product_details' => json_encode($product_details), 
+        ];
+
+        return view('pages.payment',compact('response'));
     }
 
     /**
@@ -63,7 +80,35 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $api_key = 'rzp_live_Jhd5tYbBrphTZH';
+        $api_secret = '8iU9mRVmBpCBYf68z68MEYtW';
+
+        try {
+            $api = new Api($api_key, $api_secret);
+            $attributes  = array('razorpay_signature'  => $request->rzp_signature,  'razorpay_payment_id'  => $request->rzp_paymentid ,  'razorpay_order_id' => $request->rzp_orderid);
+            $order  = $api->utility->verifyPaymentSignature($attributes);
+
+            $order1 = new Order;
+            $order1->name = $request->input('name');
+            $order1->address = $request->input('address');
+            $order1->town = $request->input('town');
+            $order1->state = $request->input('state');
+            $order1->postcode =$request->input('postcode');
+            $order1->phone =$request->input('contact');
+            $order1->email =$request->input('email');
+            $order1->order_note =$request->input('order_note');
+            $order1->product_details =$request->input('product_details');
+            $order1->order_track_id = Str::random(32);
+            $order1->amount = \Cart::getTotal();
+            $order1->rpy_orderid = $request->rzp_orderid;
+            $order1->rpy_signature = $request->rzp_signature;
+            $order1->rpy_payment_id = $request->rzp_paymentid;
+            $order1->save();
+            notify()->success('Your Order has been added successfuly!','Success!');
+            return redirect('/');
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     /**
@@ -110,4 +155,5 @@ class CheckoutController extends Controller
     {
         //
     }
+
 }
