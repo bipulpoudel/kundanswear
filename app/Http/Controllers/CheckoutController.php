@@ -153,6 +153,7 @@ class CheckoutController extends Controller
             if ($err) {
               echo "cURL Error #:" . $err;
             } else {
+                \Cart::clear();
                 return redirect('/');
             }
             
