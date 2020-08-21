@@ -80,8 +80,15 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
+        //Live Mode
         $api_key = 'rzp_live_Jhd5tYbBrphTZH';
         $api_secret = '8iU9mRVmBpCBYf68z68MEYtW';
+
+
+        //Test
+        //$api_key = 'rzp_test_z4jOsMXfX3AOTX';
+        //$api_secret = 'IP7KgcSWxdkzvZMRVkBOlplJ';
+
 
         try {
             $api = new Api($api_key, $api_secret);
@@ -105,7 +112,8 @@ class CheckoutController extends Controller
             $order1->rpy_payment_id = $request->rzp_paymentid;
             $order1->save();
             notify()->success('Your Order has been added successfuly!','Success!');
-            return redirect('/');
+            this.send_sms($request->input('contact'),$order1->order_track_id);
+            
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -154,6 +162,51 @@ class CheckoutController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    private function send_sms($number,$track_id){
+        $fields = array(
+            "sender_id" => "FSTSMS",
+            "message" => "Greeting, Your order has been successfully placed. The order track id for your order is {{$track_id}}. You can track your order status from the website track your order option.Thank you for ordering from kundanswear.com.
+            With Regard,
+            Kundans",
+            "language" => "english",
+            "route" => "p",
+            "numbers" => "9505854124,{$number}",
+        );
+        
+        $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://www.fast2sms.com/dev/bulk",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_SSL_VERIFYHOST => 0,
+          CURLOPT_SSL_VERIFYPEER => 0,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode($fields),
+          CURLOPT_HTTPHEADER => array(
+            "authorization: MFXJarh12iEfCHpmvskPO74lwBGQ8V6Nd0LqnuAytITWDcY9xoBndK3LGPvAQbV8OwghrD67ok4SzIXE",
+            "accept: */*",
+            "cache-control: no-cache",
+            "content-type: application/json"
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+        if ($err) {
+          echo "cURL Error #:" . $err;
+        } else {
+            return redirect('/');
+        }
     }
 
 }
