@@ -32,9 +32,11 @@
                         <p class="stext-115 cl6 size-50">
                             Phone Number *
                         </p>
+                        <p style="color: red">Recheck your phone number before the confirmation.It will be used in order tracking and contacting you.</p>
                         <div class="bor8 m-b-20 how-pos4-parent">
 							<input type="number" class="stext-111 cl2 plh3 size-116 p-l-10 p-r-30" type="text" name="phone" placeholder="Your Phone Number" required>
                         </div>
+                        
                         <p class="stext-115 cl6 size-50">
                             Address *
                         </p>
@@ -128,7 +130,7 @@
                             </span>
                         </div>
                     </div>
-
+                    <p style="color: red;">Sincerely, check all the details before placing order. All the details provided here will be used.</p><br>
                     <button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Place Order
                     </button>
