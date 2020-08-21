@@ -105,7 +105,7 @@ class CheckoutController extends Controller
             $order1->email =$request->input('email');
             $order1->order_note =$request->input('order_note');
             $order1->product_details =$request->input('product_details');
-            $order1->order_track_id = Str::random(32);
+            $order1->order_track_id = Str::random(8);
             $order1->amount = \Cart::getTotal();
             $order1->rpy_orderid = $request->rzp_orderid;
             $order1->rpy_signature = $request->rzp_signature;
