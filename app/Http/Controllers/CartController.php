@@ -28,10 +28,12 @@ class CartController extends Controller
     {
         $id = $request->input('id');
         $product = Product::find($id);
+        notify()->success('You got 10% off the on the product for being our top 100 customer!','Congratulation!');
+
         \Cart::add(array(
             'id' => $product->id,
             'name' => $product->name,
-            'price' => $product->price,
+            'price' => 0.9*$product->price,
             'quantity' => $request->input('num-product'),
             'attributes' => array(
                 $request->input('size')

@@ -83,7 +83,7 @@
 
                         <div class="size-209">
                             <span class="mtext-110 cl2">
-                                ₹ {{\Cart::getSubTotal()}}
+                                ₹ {{\Cart::getSubTotal()}} <span style="color: green">(You got 10% off the actual price for being our top 100 customers!)</span>
                             </span>
                         </div>
                     </div>

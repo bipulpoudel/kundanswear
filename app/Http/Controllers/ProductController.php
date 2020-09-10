@@ -48,11 +48,12 @@ class ProductController extends Controller
     public function show($slug)
     {
         $product = Product::where('slug',"=",$slug)->first();
+        $related_products = Product::inRandomOrder()->limit(12)->get();
         if(!$product){
             notify()->error('The search you requested wasnot found!','Error Occured!');
             return view('pages.errorpage');
         }
-        return view('pages.productdetail')->with('product',$product);
+        return view('pages.productdetail')->with(compact('product','related_products'));
     }
 
 
