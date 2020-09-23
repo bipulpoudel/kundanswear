@@ -41,8 +41,8 @@ class CheckoutController extends Controller
             array_push($product_details, ['slug' => $item->associatedModel->slug, 'quantity' =>$item->quantity,'size' => reset($item->attributes)[0] ]);
         }
 
-        $api_key = 'rzp_live_Jhd5tYbBrphTZH';
-        $api_secret = '8iU9mRVmBpCBYf68z68MEYtW';
+        $api_key = 'rzp_live_ct4nTnLWEOSNL0';
+        $api_secret = 'BpOPkJnaV8EGRW466n0V66o8';
         $api = new Api($api_key, $api_secret);
 
         $receipt_id = Str::random(20);
