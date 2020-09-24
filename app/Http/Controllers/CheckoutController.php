@@ -81,8 +81,8 @@ class CheckoutController extends Controller
     public function store(Request $request)
     {
         //Live Mode
-        $api_key = 'rzp_live_Jhd5tYbBrphTZH';
-        $api_secret = '8iU9mRVmBpCBYf68z68MEYtW';
+        $api_key = 'rzp_live_ct4nTnLWEOSNL0';
+        $api_secret = 'BpOPkJnaV8EGRW466n0V66o8';
 
 
         //Test
