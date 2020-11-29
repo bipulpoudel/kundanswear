@@ -15,7 +15,7 @@ class TrackorderController extends Controller
     public function index()
     {
         $order = null;
-        return view('pages.trackorder')->with('order',$order);;
+        return view('pages.trackorder')->with('order',$order);
     }
 
     /**
